@@ -39,7 +39,7 @@ module Timeserver
             if IO.select([@socket], nil, nil, TIMEOUT)
               begin
                 conn = @socket.accept_nonblock
-                @pool << [lambda { |client| handle_client(client) }, conn]
+                @pool << Job.new(conn) { |client| handle_client(client) }
               rescue IO::WaitReadable, Errno::EINTR
               rescue => ex
                 puts "Error while accepting client: #{ex.message}"

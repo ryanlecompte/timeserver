@@ -1,4 +1,16 @@
 module Timeserver
+  # Encapsulates a callable job.
+  class Job
+    def initialize(*args, &block)
+      @args = args
+      @block = block
+    end
+
+    def invoke
+      @block.call(*@args)
+    end
+  end
+
   # Generic thread pool that services jobs.
   class ThreadPool
     def initialize(size)
@@ -6,8 +18,7 @@ module Timeserver
       @workers = Array.new(size) do
         Thread.new do
           while job = @queue.pop
-            handler, *args = job
-            handler.call(*args)
+            job.invoke
           end
         end
       end
