@@ -6,4 +6,4 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = %w(--format progress)
 end
 
-task default: [:spec]
+task :default => [:spec]
