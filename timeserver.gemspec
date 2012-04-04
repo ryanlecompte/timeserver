@@ -15,5 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Timeserver::VERSION
 
-  gem.add_development_dependency("rspec", "~> 2.5.0")
+  gem.add_development_dependency('rspec', '~> 2.9')
+  gem.add_development_dependency('rake', '~> 0.9.2.2')
 end

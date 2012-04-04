@@ -50,6 +50,7 @@ module Timeserver
       end
 
       @acceptors.each(&:join)
+      close(@socket)
     end
 
     def install_signal_handlers
@@ -65,10 +66,13 @@ module Timeserver
     rescue => ex
       puts "Error while writing to client: #{ex.message}"
     ensure
-      begin
-        conn.close
-      rescue
-      end
+      close(conn)
+    end
+
+    def close(socket)
+      socket.close if socket
+    rescue
+      # best effort
     end
   end
 end
