@@ -1,5 +1,7 @@
 # Timeserver
 
+NOTE: This is just an experiment/demonstration and should not be used in production. :)
+
 Timeserver is a very simple multithreaded "pre-threading" server that uses threads instead of Kernel#fork. The basic idea
 is that a single listener socket is shared among a group of threads as opposed to a group of forked processes. Pre-forking
 is very popular in servers such as Unicorn. This is an experiment to use threads instead of forking to ensure a low memory
