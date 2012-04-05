@@ -1,6 +1,5 @@
 require 'rspec'
-
-require_relative '../lib/timeserver'
+require 'timeserver'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
