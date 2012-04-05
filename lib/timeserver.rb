@@ -2,10 +2,10 @@ require 'socket'
 require 'thread'
 require 'optparse'
 
-require 'timeserver/cli'
-require 'timeserver/server'
-require 'timeserver/thread_pool'
-require 'timeserver/version'
+require_relative 'timeserver/cli'
+require_relative 'timeserver/server'
+require_relative 'timeserver/thread_pool'
+require_relative 'timeserver/version'
 
 module Timeserver
   def self.run(opts)
